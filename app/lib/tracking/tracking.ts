@@ -1,7 +1,7 @@
 import { Habit } from "../habit/habit";
 
 export interface Tracking {
-  total: number;
+  count: number;
   habitId: number;
 }
 
@@ -10,15 +10,17 @@ export interface TrackingHabit extends Tracking {
   percentage: number;
 }
 
-export function getTrackingsWithHabits(habits: Habit[]): TrackingHabit[] {
-  const trackings = getTrackings();
+export async function getTrackingsWithHabits(
+  habits: Habit[]
+): Promise<TrackingHabit[]> {
+  const trackings = await getTrackings();
   return trackings.map<TrackingHabit>((tracking) => {
     const habit = habits.find((h) => h.id === tracking.habitId);
     if (habit === null) {
       throw new Error("Tracking without habit created");
     }
     const myHabit = habit as Habit;
-    const percentage = (tracking.total * 100) / myHabit.goal;
+    const percentage = (tracking.count * 100) / myHabit.goal;
     return {
       ...tracking,
       habit: myHabit,
@@ -27,11 +29,18 @@ export function getTrackingsWithHabits(habits: Habit[]): TrackingHabit[] {
   });
 }
 
-export function getTrackings(): Tracking[] {
-  return [
-    {
-      total: 1,
-      habitId: 1,
+export async function getTrackings(): Promise<Tracking[]> {
+  const groupGoalTracking = await prisma.goalTracking.groupBy({
+    by: "habitId",
+    _sum: {
+      id: true,
     },
-  ];
+  });
+
+  return groupGoalTracking.map<Tracking>((group) => {
+    return {
+      count: group._sum.id || 0,
+      habitId: group.habitId,
+    };
+  });
 }

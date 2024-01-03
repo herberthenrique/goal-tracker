@@ -14,7 +14,7 @@ export default function Heading() {
           {formatter.format(today)} / Day {dayNumber}
         </div>
         <div className="text-white text-3xl md:text-6xl font-semibold font-['Montserrat Alternates']">
-          Herbert’s Goals
+          Herbert’s 2024 Goals
         </div>
       </div>
     </section>

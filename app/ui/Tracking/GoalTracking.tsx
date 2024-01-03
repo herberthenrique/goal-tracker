@@ -27,7 +27,7 @@ export function GoalTracking({ trackingHabits }: GoalTrackingProps) {
               ></div>
             </div>
             <div className=" text-right text-base font-light w-full mt-2.5 max-md:max-w-full">
-              {tracking.total}/{tracking.habit.goal}
+              {tracking.count}/{tracking.habit.goal}
             </div>
           </div>
         ))}

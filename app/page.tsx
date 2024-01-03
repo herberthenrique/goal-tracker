@@ -4,9 +4,9 @@ import { getHabits } from "./lib/habit/habit";
 import { GoalTracking } from "./ui/Tracking/GoalTracking";
 import { getTrackingsWithHabits } from "./lib/tracking/tracking";
 
-export default function Home() {
-  const habits = getHabits();
-  const trackingHabits = getTrackingsWithHabits(habits);
+export default async function Home() {
+  const habits = await getHabits();
+  const trackingHabits = await getTrackingsWithHabits(habits);
   return (
     <main className="w-screen min-h-screen">
       <Heading />
