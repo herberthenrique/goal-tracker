@@ -8,12 +8,12 @@ export default function Heading() {
   const dayNumber = differenceInDaysFromBeggingOfTheYear(today);
 
   return (
-    <section className="w-screen bg-hero-pattern sm:bg-hero-pattern-desktop  h-80">
-      <div className="px-24 flex justify-center items-end	 flex-col h-full">
-        <div className="text-white text-4xl font-light">
+    <section className="bg-hero-pattern sm:bg-hero-pattern-desktop h-80">
+      <div className="px-5 md:px-24 flex justify-center items-end flex-col h-full">
+        <div className="text-white text-l md:text-4xl font-light">
           {formatter.format(today)} / Day {dayNumber}
         </div>
-        <div className="text-white text-6xl font-semibold font-['Montserrat Alternates']">
+        <div className="text-white text-3xl md:text-6xl font-semibold font-['Montserrat Alternates']">
           Herbert’s Goals
         </div>
       </div>

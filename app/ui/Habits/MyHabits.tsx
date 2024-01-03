@@ -6,18 +6,20 @@ interface MyHabitsProps {
 
 export function MyHabits({ habits }: MyHabitsProps) {
   return (
-    <div className="items-start flex flex-col pb-8 w-full">
-      <div className="text-gray-800 text-5xl font-bold self-stretch w-full max-md:max-w-full max-md:text-4xl">
-        Habits
-      </div>
-      <div className="self-stretch w-full mt-8 max-md:max-w-full max-md:pr-5">
-        <div className="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0">
-          {habits.map((habit) => (
-            <HabitCard key={habit.name} habit={habit} />
-          ))}
+    <section className="px-5 py-10 md:p-24">
+      <div className="items-start flex flex-col pb-8 w-full">
+        <div className="text-gray-800 text-5xl font-bold self-stretch w-full max-md:max-w-full max-md:text-4xl">
+          Habits
+        </div>
+        <div className="self-stretch w-full mt-8 max-md:max-w-full max-md:pr-5">
+          <div className="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0">
+            {habits.map((habit) => (
+              <HabitCard key={habit.name} habit={habit} />
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

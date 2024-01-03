@@ -8,17 +8,11 @@ export default function Home() {
   const habits = getHabits();
   const trackingHabits = getTrackingsWithHabits(habits);
   return (
-    <main>
+    <main className="w-screen min-h-screen">
       <Heading />
-      <div className="flex flex-col min-h-screen">
-        <section className=" p-24">
-          <MyHabits habits={habits} />
-        </section>
-        <section className="bg-black">
-          <div className="p-24">
-            <GoalTracking trackingHabits={trackingHabits} />
-          </div>
-        </section>
+      <div className="flex flex-col">
+        <MyHabits habits={habits} />
+        <GoalTracking trackingHabits={trackingHabits} />
       </div>
       {/* <footer>
         Photo by{" "}
