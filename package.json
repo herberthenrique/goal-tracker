@@ -8,8 +8,7 @@
     "lint": "next lint",
     "build": "npx prisma generate && prisma migrate deploy && next build",
     "prisma:generate": "prisma generate",
-    "prisma:exec": "pnpm exec prisma ",
-    "postinstall": "prisma generate"
+    "prisma:exec": "pnpm exec prisma "
   },
   "dependencies": {
     "@prisma/client": "5.7.1",

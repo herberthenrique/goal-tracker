@@ -30,17 +30,19 @@ export async function getTrackingsWithHabits(
 }
 
 export async function getTrackings(): Promise<Tracking[]> {
-  const groupGoalTracking = await prisma.goalTracking.groupBy({
+  const groupGoalTracking = await prisma?.goalTracking.groupBy({
     by: "habitId",
     _sum: {
       id: true,
     },
   });
 
-  return groupGoalTracking.map<Tracking>((group) => {
-    return {
-      count: group._sum.id || 0,
-      habitId: group.habitId,
-    };
-  });
+  return (
+    groupGoalTracking?.map<Tracking>((group) => {
+      return {
+        count: group._sum.id || 0,
+        habitId: group.habitId,
+      };
+    }) || []
+  );
 }

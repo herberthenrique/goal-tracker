@@ -9,7 +9,7 @@ export interface Habit {
 }
 
 export async function getHabits(): Promise<Habit[]> {
-  const habits = await prisma.habit.findMany({});
+  const habits = await prisma?.habit.findMany({});
 
   return habits;
 }
