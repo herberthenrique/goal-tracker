@@ -1,4 +1,7 @@
+import { sql } from "kysely";
+import { Database } from "../db/schema";
 import { Habit } from "../habit/habit";
+import { createKysely } from "@vercel/postgres-kysely";
 
 export interface Tracking {
   count: number;
@@ -30,10 +33,11 @@ export async function getTrackingsWithHabits(
 }
 
 export async function getTrackings(): Promise<Tracking[]> {
-  return [
-    {
-      count: 2,
-      habitId: 1,
-    },
-  ];
+  const db = createKysely<Database>();
+  db.selectFrom;
+  return await db
+    .selectFrom("goal_tracking")
+    .select(["habit_id as habitId", sql<number>`count(id)`.as("count")])
+    .groupBy("habit_id")
+    .execute();
 }
