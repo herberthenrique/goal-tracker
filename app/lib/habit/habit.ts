@@ -1,5 +1,3 @@
-import prisma from "../database/prisma";
-
 export interface Habit {
   id: number;
   name: string;
@@ -9,7 +7,13 @@ export interface Habit {
 }
 
 export async function getHabits(): Promise<Habit[]> {
-  const habits = await prisma?.habit.findMany({});
-
-  return habits;
+  return [
+    {
+      id: 1,
+      name: "🏋🏻‍♂️ Exercise",
+      description: "Energize my body and sharpen my mind",
+      goal: 120,
+      formmatedGoal: "120 Days",
+    },
+  ];
 }
