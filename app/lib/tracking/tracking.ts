@@ -33,11 +33,15 @@ export async function getTrackingsWithHabits(
 }
 
 export async function getTrackings(): Promise<Tracking[]> {
-  const db = createKysely<Database>();
-  db.selectFrom;
-  return await db
-    .selectFrom("goal_tracking")
-    .select(["habit_id as habitId", sql<number>`count(id)`.as("count")])
-    .groupBy("habit_id")
-    .execute();
+  return [{
+    count: 66,
+    habitId: 1
+  }]
+  // const db = createKysely<Database>();
+  // db.selectFrom;
+  // return await db
+  //   .selectFrom("goal_tracking")
+  //   .select(["habit_id as habitId", sql<number>`count(id)`.as("count")])
+  //   .groupBy("habit_id")
+  //   .execute();
 }
